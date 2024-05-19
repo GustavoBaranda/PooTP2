@@ -11,9 +11,8 @@ namespace PooTP2
         private string _Nombre;
         private float _PorcGanancia;
         private float _PrecioLista;
-
-        public Suplementos(string nombre, float porcGanancia, float precioLista, float precio) 
-            : base(precio)
+        public Suplementos(string nombre, float porcGanancia, float precioLista) 
+            
         {
             _Nombre = nombre;
             _PorcGanancia = porcGanancia;
@@ -22,7 +21,7 @@ namespace PooTP2
 
         public override float CalcularPrecio()
         {
-            float precioConGanancia = _PrecioLista + (_PrecioLista * (_PorcGanancia / 100));
+            float precioConGanancia =  _PrecioLista + (_PrecioLista * (_PorcGanancia / 100));
             float precioFinal = precioConGanancia * 1.21F;
             return precioFinal;
         }

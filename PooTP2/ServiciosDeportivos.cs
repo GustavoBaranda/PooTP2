@@ -11,20 +11,21 @@ namespace PooTP2
         private int _Duracion;
         private string _TipoDeServicio;
 
-        public ServiciosDeportivos(int duracion, string tipoDeServicio, float precio) 
-            : base(precio) 
+        public ServiciosDeportivos(int duracion, string tipoDeServicio) 
         {
             _Duracion = duracion;
             _TipoDeServicio = tipoDeServicio;
         }
-        public void AgregarServicio() 
+
+          public void AgregarServicio() 
         {
             Console.WriteLine("Se agrego un Servicio");
         }
-
         public override float CalcularPrecio()
         {
-            throw new NotImplementedException();
+            float precio = _Duracion * 2000;
+            float precioFinal = precio * 41.105F;   
+            return precioFinal;
         }
     }
 }
