@@ -16,7 +16,6 @@ namespace PooTP2
             _Duracion = duracion;
             _TipoDeServicio = tipoDeServicio;
         }
-
           public void AgregarServicio() 
         {
             Console.WriteLine("Se agrego un Servicio");
