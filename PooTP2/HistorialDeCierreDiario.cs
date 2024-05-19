@@ -8,14 +8,18 @@ namespace PooTP2
 {
     internal class HistorialDeCierreDiario
     {
-        private List<ServiciosDeportivos> _ListarServicios;
-        private List<Suplementos> _Suplementos;
-        public HistorialDeCierreDiario(List<ServiciosDeportivos> listarServicios, List<Suplementos> suplementos)
+        private List<Servicio> _ListarServicios = new List<Servicio>();        
+        public void AddService (Servicio servicio)
         {
-            _ListarServicios = listarServicios;
-            _Suplementos = suplementos;
+            _ListarServicios.Add(servicio);
+            Console.WriteLine("Servicio agregado correctamente");
         }
-
+        public void mostrarServicios()
+        {
+            _ListarServicios.ForEach((servicio) => {
+                Console.WriteLine(servicio);
+            });
+        }
         public void MontoTotalFacturado()
         {
             Console.WriteLine("Monto total");
