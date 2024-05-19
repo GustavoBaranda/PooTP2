@@ -14,7 +14,6 @@ namespace PooTP2
         {
             _PrecioLista = precioLista;
         }
-
         public abstract float CalcularPrecio();
     }
 }

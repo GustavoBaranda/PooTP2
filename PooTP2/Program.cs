@@ -6,9 +6,9 @@ namespace PooTP2
     {
         static void Main(string[] args)
         {
-            Suplementos suplementos = new Suplementos("Proteinas", 20.00F, 55.00F);
-            ClaseGrupales claseZumba = new ClaseGrupales("Zumba",15, 45);
-            EntrenamientoPersonalizado musculacion = new EntrenamientoPersonalizado("Pesas",90);
+            Servicio suplementos = new Suplementos("Proteinas", 20.00F, 55.00F);
+            ServiciosDeportivos claseZumba = new ClaseGrupales("Zumba",15, 45);
+            ServiciosDeportivos musculacion = new EntrenamientoPersonalizado("Pesas",325);
             HistorialDeCierreDiario historial = new HistorialDeCierreDiario();
             historial.AddService(claseZumba);
             historial.AddService(suplementos);

@@ -9,7 +9,6 @@ namespace PooTP2
     internal class EntrenamientoPersonalizado : ServiciosDeportivos
     {
         protected string _TipoDeEntrenamiento;
-
         public EntrenamientoPersonalizado(string tipoDeEntrenamiento, int _Duracion  ) 
             : base(_Duracion,2000)
         {
@@ -24,8 +23,7 @@ namespace PooTP2
         public override string ToString()
         {
             float result = CalcularPrecio();
-            return $"Tipo de entrenamiento: {_TipoDeEntrenamiento}, Duracion en Minutos: {_Duracion}, Valor por Hr es: {_PrecioLista}, Precio Final: ${result}";
+            return $"Tipo de entrenamiento: {_TipoDeEntrenamiento}, Duracion : {_Duracion/60}:{_Duracion % 60}hs ,Valor por Hr es: {_PrecioLista}, Precio Final: ${result}";
         }
-
     }
 }

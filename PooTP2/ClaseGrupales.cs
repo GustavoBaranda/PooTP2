@@ -10,14 +10,12 @@ namespace PooTP2
     {
         public string _tipoClase;
         public int _CantidadDeInscriptos;
-
         public ClaseGrupales(string tipoClase, int cantidadDeInscriptos, int _Duracion ) 
             : base (_Duracion, 80)
         {
             _tipoClase = tipoClase;
             _CantidadDeInscriptos = cantidadDeInscriptos;
         }
-
         public override float CalcularPrecio()
         {
             float result = _Duracion * _PrecioLista;

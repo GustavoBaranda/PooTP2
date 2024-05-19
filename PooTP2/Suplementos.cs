@@ -16,7 +16,6 @@ namespace PooTP2
             _Nombre = nombre;
             _PorcGanancia = porcGanancia;
         }
-
         public override string ToString()
         {
             float precioTotal = CalcularPrecio();

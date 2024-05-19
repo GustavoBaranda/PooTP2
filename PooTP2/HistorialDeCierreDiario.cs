@@ -8,9 +8,7 @@ namespace PooTP2
 {
     internal class HistorialDeCierreDiario
     {
-        private List<Servicio> _ListarServicios = new List<Servicio>();
- 
-        
+        private List<Servicio> _ListarServicios = new List<Servicio>();        
         public void AddService (Servicio servicio)
         {
             _ListarServicios.Add(servicio);
