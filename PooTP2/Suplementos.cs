@@ -10,13 +10,11 @@ namespace PooTP2
     {
         private string _Nombre;
         private float _PorcGanancia;
-        private float _PrecioLista;
         public Suplementos(string nombre, float porcGanancia, float precioLista) 
-            
+            : base(precioLista)   
         {
             _Nombre = nombre;
             _PorcGanancia = porcGanancia;
-            _PrecioLista = precioLista;
         }
 
         public override float CalcularPrecio()

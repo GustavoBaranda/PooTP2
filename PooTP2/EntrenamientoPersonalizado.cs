@@ -10,8 +10,8 @@ namespace PooTP2
     {
         private string _TipoDeEntrenamiento;
 
-        public EntrenamientoPersonalizado(string tipoDeEntrenamiento, int duracion, string tipoDeServicio, float precio) 
-            : base(duracion, tipoDeServicio, precio)
+        public EntrenamientoPersonalizado(string tipoDeEntrenamiento, int duracion, string tipoDeServicio) 
+            : base(duracion, tipoDeServicio)
         {
             _TipoDeEntrenamiento = tipoDeEntrenamiento;
         }

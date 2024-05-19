@@ -8,7 +8,13 @@ namespace PooTP2
 {
     abstract class Servicio
     {
-         protected float _PrecioLista;         
-         public abstract float CalcularPrecio();
+         protected float _PrecioLista;
+
+        public Servicio(float precioLista)
+        {
+            _PrecioLista = precioLista;
+        }
+
+        public abstract float CalcularPrecio();
     }
 }

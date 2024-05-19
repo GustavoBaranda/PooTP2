@@ -11,8 +11,8 @@ namespace PooTP2
         public string _tipoClase;
         public int _CantidadDeInscriptos;
 
-        public ClaseGrupales(string tipoClase, int cantidadDeInscriptos, int duracion, string tipoDeServicio, float precio) 
-            : base (duracion, tipoDeServicio, precio)
+        public ClaseGrupales(string tipoClase, int cantidadDeInscriptos, int duracion, string tipoDeServicio) 
+            : base (duracion, tipoDeServicio)
         {
             _tipoClase = tipoClase;
             _CantidadDeInscriptos = cantidadDeInscriptos;

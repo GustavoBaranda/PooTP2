@@ -11,7 +11,7 @@ namespace PooTP2
         private int _Duracion;
         private string _TipoDeServicio;
 
-        public ServiciosDeportivos(int duracion, string tipoDeServicio) 
+        public ServiciosDeportivos(int duracion, string tipoDeServicio) : base(0)
         {
             _Duracion = duracion;
             _TipoDeServicio = tipoDeServicio;
@@ -24,7 +24,7 @@ namespace PooTP2
         public override float CalcularPrecio()
         {
             float precio = _Duracion * 2000;
-            float precioFinal = precio * 41.105F;   
+            float precioFinal = precio * 1.105F;   
             return precioFinal;
         }
     }
