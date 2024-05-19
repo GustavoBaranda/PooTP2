@@ -9,8 +9,8 @@ namespace PooTP2
     internal class Suplementos : Servicio
     {
         private string _Nombre;
-        private float _PorcGanancia;
-        public Suplementos(string nombre, float porcGanancia, float precioLista) 
+        private double _PorcGanancia;
+        public Suplementos(string nombre, double porcGanancia, double precioLista) 
             : base(precioLista)   
         {
             _Nombre = nombre;
@@ -19,14 +19,14 @@ namespace PooTP2
 
         public override string ToString()
         {
-            float precioTotal = CalcularPrecio();
+            double precioTotal = CalcularPrecio();
             return $"Suplemento:{_Nombre}, Porcentaje de ganancia: {_PorcGanancia}% Precio de lista: ${_PrecioLista}, Precio Total: ${precioTotal} ";
         }
-        public override float CalcularPrecio()
+        public override double CalcularPrecio()
         {
-            float precioConGanancia =  _PrecioLista * (1+(_PorcGanancia / 100));
-            float precioFinal = precioConGanancia * 1.21F;
-            return precioFinal;
+            double precioConGanancia =  _PrecioLista * (1+(_PorcGanancia / 100));
+            double precioFinal = precioConGanancia * 1.21;
+            return Math.Round(precioFinal,2);
         }
     }
 }

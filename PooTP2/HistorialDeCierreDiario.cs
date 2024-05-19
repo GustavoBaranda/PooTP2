@@ -22,9 +22,14 @@ namespace PooTP2
                 Console.WriteLine(servicio);
             });
         }
-        public void MontoTotalFacturado()
+        public double MontoTotalFacturado()
         {
-            Console.WriteLine("Monto total");
+            double total = 0; 
+            for (int i = 0; i < _ListarServicios.Count; i++)
+            {
+                total += _ListarServicios[i].CalcularPrecio();
+            }
+            return Math.Round(total,2); 
         }
 
         public void CantidadDeServiciosSimples() 

@@ -18,21 +18,17 @@ namespace PooTP2
             _CantidadDeInscriptos = cantidadDeInscriptos;
         }
 
-        public override float CalcularPrecio()
+        public override double CalcularPrecio()
         {
-            float result = _Duracion * _PrecioLista;
-            result = (_CantidadDeInscriptos > 10 ) ? result *0.80f : result ;
-            // Console.WriteLine((_CantidadDeInscriptos > 10) ? 
-            // "El precio de la clase cuenta con un descuento del 20% por superar los 10 inscriptos"
-            // :
-            // "El precio de la clase no posee descuentos ya que la cantidad de inscriptos no superan los 10."
-            // );
-            return result += result*0.105f;
+            double precioClases = _Duracion * _PrecioLista;
+            precioClases = (_CantidadDeInscriptos > 10 ) ? precioClases *0.80 : precioClases ;
+            double precioClasesFinal = precioClases += precioClases*0.105;
+            return Math.Round(precioClasesFinal,2);
         }
 
         public override string ToString()
         {
-            float result = CalcularPrecio();
+            double result = CalcularPrecio();
             return $"Clase: {_tipoClase}, Precio por minuto: ${_PrecioLista},Duracion de la clase en Min: {_Duracion}, Cant de Inscriptos: {_CantidadDeInscriptos}, Precio total de la clase: ${result}";
         }
     }

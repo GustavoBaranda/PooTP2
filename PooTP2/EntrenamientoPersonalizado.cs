@@ -15,15 +15,15 @@ namespace PooTP2
         {
             _TipoDeEntrenamiento = tipoDeEntrenamiento;
         }
-        public override float CalcularPrecio() {
+        public override double CalcularPrecio() {
             //calcula el precio de la clase.
-            float precioClase = _PrecioLista * (_Duracion/60);
-             
-            return precioClase += precioClase * 0.105f;
+            double precioClase = _PrecioLista * (_Duracion/60);
+             double precioFinal = precioClase += precioClase * 0.105;
+            return Math.Round(precioFinal,2);
         }
         public override string ToString()
         {
-            float result = CalcularPrecio();
+            double result = CalcularPrecio();
             return $"Tipo de entrenamiento: {_TipoDeEntrenamiento}, Duracion en Minutos: {_Duracion}, Valor por Hr es: {_PrecioLista}, Precio Final: ${result}";
         }
 
