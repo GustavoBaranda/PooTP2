@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,8 +9,9 @@ namespace PooTP2
 {
     internal class HistorialDeCierreDiario
     {
-        private List<Servicio> _ListarServicios = new List<Servicio>();        
-        public void AddService (Servicio servicio)
+        private List<Servicio> _ListarServicios = new List<Servicio>();
+
+        public void AgregarServicio(Servicio servicio)
         {
             _ListarServicios.Add(servicio);
             Console.WriteLine("Servicio agregado correctamente");
@@ -20,14 +22,19 @@ namespace PooTP2
                 Console.WriteLine(servicio);
             });
         }
-        public void MontoTotalFacturado()
+        public double MontoTotalFacturado()
         {
-            Console.WriteLine("Monto total");
+            double total = 0; 
+            for (int i = 0; i < _ListarServicios.Count; i++)
+            {
+                total += _ListarServicios[i].CalcularPrecio();
+            }
+            return Math.Round(total,2); 
         }
 
-        public void CantidadDeServiciosSimples() 
+        public int CantidadDeServiciosSimples() 
         {
-            Console.WriteLine("Cantidad de servivios simples");
+           return _ListarServicios.OfType<ClaseGrupales>().Count(c => c._CantidadDeInscriptos < 10);
         }
     }
 }
