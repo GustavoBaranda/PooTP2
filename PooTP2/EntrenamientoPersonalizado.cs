@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,16 +10,19 @@ namespace PooTP2
     internal class EntrenamientoPersonalizado : ServiciosDeportivos
     {
         protected string _TipoDeEntrenamiento;
-        public EntrenamientoPersonalizado(string tipoDeEntrenamiento, int _Duracion  ) 
-            : base(_Duracion,2000)
+        private const double PRECIOENTRENAMIENTO = 2000;
+        public EntrenamientoPersonalizado(string tipoDeEntrenamiento, int _Duracion) 
+            : base(_Duracion, PRECIOENTRENAMIENTO)
         {
             _TipoDeEntrenamiento = tipoDeEntrenamiento;
         }
-        public override double CalcularPrecio() {
+
+         public override double CalcularPrecio() {
             //calcula el precio de la clase.
-            double precioClase = _PrecioLista * (_Duracion/60);
-             double precioFinal = precioClase += precioClase * 0.105;
-            return Math.Round(precioFinal,2);
+            
+            double precioClase = (PRECIOENTRENAMIENTO / 60) * _Duracion;
+            double precioFinal = precioClase += precioClase * 0.105;
+            return precioFinal;
         }
         public override string ToString()
         {

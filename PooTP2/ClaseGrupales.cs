@@ -10,17 +10,18 @@ namespace PooTP2
     {
         public string _tipoClase;
         public int _CantidadDeInscriptos;
-        public ClaseGrupales(string tipoClase, int cantidadDeInscriptos, int _Duracion ) 
-            : base (_Duracion, 80)
+        private const double PRECIOGRUPAL = 80;
+
+        public ClaseGrupales(string tipoClase, int cantidadDeInscriptos, int _Duracion) 
+            : base (_Duracion, PRECIOGRUPAL)
         {
             _tipoClase = tipoClase;
             _CantidadDeInscriptos = cantidadDeInscriptos;
         }
-
-        public override double CalcularPrecio()
+              public override double CalcularPrecio()
         {
-            double precioClases = _Duracion * _PrecioLista;
-            precioClases = (_CantidadDeInscriptos > 10 ) ? precioClases *0.80 : precioClases ;
+            double precioClases = _Duracion * PRECIOGRUPAL;
+            precioClases = (_CantidadDeInscriptos > 10 ) ? precioClases * 0.80 : precioClases;
             double precioClasesFinal = precioClases += precioClases*0.105;
             return Math.Round(precioClasesFinal,2);
         }
