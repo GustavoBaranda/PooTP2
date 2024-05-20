@@ -5,24 +5,12 @@ namespace PooTP2
 {
     internal class Program
     {
-
         static void Main(string[] args)
         {
-            //Suplementos suplementos = new Suplementos("Proteinas", 20, 55);
-            HistorialDeCierreDiario historial = new HistorialDeCierreDiario();
-            //ClaseGrupales claseZumba = new ClaseGrupales("Zumba", 5, 45);
-            //ClaseGrupales claseZumba1 = new ClaseGrupales("Zumba", 9, 45);
-            //EntrenamientoPersonalizado musculacion = new EntrenamientoPersonalizado("Pesas", 90);
-            //historial.AddService(claseZumba);
-            //historial.AddService(suplementos);
-            //historial.AddService(musculacion);
-            //historial.AddService(claseZumba1);
-            //historial.mostrarServicios();
-            //Console.WriteLine(historial.MontoTotalFacturado());
-            //Console.WriteLine(historial.CantidadDeServiciosSimples());
 
-            Console.WriteLine(2000*1.5);
-                       bool continuar = true;
+            HistorialDeCierreDiario historial = new HistorialDeCierreDiario();
+                                       
+            bool continuar = true;
 
             while (continuar)
             {
