@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 
 namespace PooTP2
@@ -18,7 +19,12 @@ namespace PooTP2
                 Console.WriteLine("1. Agregar un servicio");
                 Console.WriteLine("2. Mostrar detalles de los servicio");
                 Console.WriteLine("3. Salir del Programa");
-                int opcion = int.Parse(Console.ReadLine());
+                int opcion;
+
+                while (!int.TryParse(Console.ReadLine(), out opcion))
+                {
+                    break;
+                }
 
                 switch (opcion)
                 {
@@ -33,7 +39,7 @@ namespace PooTP2
                         continuar = false;
                         break;
                     default:
-                        Console.WriteLine("Opcion no valida, intente nuevamente trolo");
+                        Console.WriteLine("Ingrese un número válido mayor que cero entre 1 y 3.\n");
                         break;
                 }
             }
@@ -42,32 +48,63 @@ namespace PooTP2
 
             static void AgregarServicios(HistorialDeCierreDiario historial)
             {
+
                 Console.WriteLine("Agregar Servicio");
                 Console.WriteLine("1. Entrenamiento personalizado");
                 Console.WriteLine("2. Clase Grupal");
-                Console.WriteLine("Selecionar una opcion trolo");
-                int tipoDeServivio = int.Parse(Console.ReadLine());
+                Console.WriteLine("3. Venta de suplemento");
+                Console.WriteLine("4. Volver al menu");
+                Console.WriteLine("Selecionar una opcion\n");
 
-                Console.WriteLine("Ingrese el tipo de entrenamiento: ");
-                string tipo = Console.ReadLine();
-                if (string.IsNullOrEmpty(tipo))
+                int tipoDeServicio;
+
+                while (!int.TryParse(Console.ReadLine(), out tipoDeServicio) || tipoDeServicio <= 0 || tipoDeServicio >= 5)
                 {
-                    return;
+                    Console.WriteLine("Agregar Servicio");
+                    Console.WriteLine("1. Entrenamiento personalizado");
+                    Console.WriteLine("2. Clase Grupal");
+                    Console.WriteLine("3. Venta de suplemento");
+                    Console.WriteLine("4. Volver al menu");
+                    Console.WriteLine("Selecionar una opcion\n");
                 }
 
-                Console.WriteLine("Ingrese duracion en minutos: ");
-                int duracion = int.Parse(Console.ReadLine());
+                if (tipoDeServicio == 4) return;
 
-                if (tipoDeServivio == 1)
+
+                string tipo;
+                while (true)
+                {
+                    Console.WriteLine("Ingrese el tipo de entrenamiento: ");
+                    tipo = Console.ReadLine().Trim();
+                    if (!string.IsNullOrEmpty(tipo))
+                    {
+                        break;
+                    }
+                }
+
+                int duracion;
+                while (!int.TryParse(Console.ReadLine(), out duracion) || duracion <= 0)
+                { 
+                    Console.WriteLine("Ingrese duracion en minutos: ");
+                }
+
+                if (tipoDeServicio == 1)
                 {
                     historial.AgregarServicio(new EntrenamientoPersonalizado(tipo, duracion));
                     Console.WriteLine();
                 }
-                else if (tipoDeServivio == 2)
+                else if (tipoDeServicio == 2)
                 {
-                    Console.WriteLine("Ingrese el numero de participante");
-                    int nroParticipante = int.Parse(Console.ReadLine());
+                    int nroParticipante;
+                    while (!int.TryParse(Console.ReadLine(), out nroParticipante) || nroParticipante <= 0)
+                    {
+                        Console.WriteLine("Ingrese el numero de participante");
+                    }
                     historial.AgregarServicio(new ClaseGrupales(tipo, nroParticipante, duracion));
+                }
+                else if (tipoDeServicio == 3)
+                {
+                    Console.WriteLine("Ingrese nombre del suplemento");
                 }
             }
 
