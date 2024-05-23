@@ -9,7 +9,7 @@ namespace PooTP2
 {
     internal class EntrenamientoPersonalizado : ServiciosDeportivos
     {
-        protected string _TipoDeEntrenamiento;
+        public string _TipoDeEntrenamiento;
         private const double PRECIOENTRENAMIENTO = 2000;
         public EntrenamientoPersonalizado(string tipoDeEntrenamiento, int _Duracion) 
             : base(_Duracion, PRECIOENTRENAMIENTO)

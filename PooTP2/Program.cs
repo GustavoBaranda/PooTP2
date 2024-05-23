@@ -1,4 +1,8 @@
-﻿namespace PooTP2
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace PooTP2
 {
     internal class Program
     {
@@ -74,48 +78,114 @@
                     switch (tipoDeServicio)
                     {
                         case 1:
-                            Console.WriteLine("\nopcion 1");
-                            Console.WriteLine("Entrenamiento personalizado\n");
-                            string tipoEntrenamiento = ControlDeString("Ingrese el tipo de entrenamiento: ");
-                            int duracionEntrenamiento = ControlDeIntPositivoIntPositivo("Ingrese la duración en minutos: ");
-                            historial.AgregarServicio(new EntrenamientoPersonalizado(tipoEntrenamiento, duracionEntrenamiento));
-                            Console.WriteLine("Entrenamiento personalizado agregado.\n");
-                            historial.MostrarUltimoServicio();
+                            List<EntrenamientoPersonalizado> entrenamientoPersonalizado = new List<EntrenamientoPersonalizado>
+                            {
+                                new EntrenamientoPersonalizado("Pesas", 0),
+                                new EntrenamientoPersonalizado("Calestenia", 0),
+                                new EntrenamientoPersonalizado("Musculacion", 0),
+                                new EntrenamientoPersonalizado("Crossfit", 0)
+                            };
+                            bool tipoEntrenamientoExistente = false;
+                            while (!tipoEntrenamientoExistente)
+                            {
+                                Console.WriteLine("\nopcion 1");
+                                Console.WriteLine("Entrenamiento personalizado\n");
+                                List<string> tiposDeEntrenamientos = entrenamientoPersonalizado.Select(e => e._TipoDeEntrenamiento).ToList();
+                                Console.WriteLine("Tipos de entrenamientos disponibles:");
+                                tiposDeEntrenamientos.ForEach(tipo => Console.Write(tipo + " "));
+
+                                string tipoEntrenamiento = ControlDeString("\nIngrese el tipo de entrenamiento: ");
+                                bool existe = entrenamientoPersonalizado.Any(entrenamiento => entrenamiento._TipoDeEntrenamiento.Equals(tipoEntrenamiento, StringComparison.OrdinalIgnoreCase));
+
+                                if (existe)
+                                {
+                                    int duracionEntrenamiento = ControlDeIntPositivoIntPositivo("Ingrese la duración en minutos: ");
+                                    historial.AgregarServicio(new EntrenamientoPersonalizado(tipoEntrenamiento, duracionEntrenamiento));
+
+                                    Console.WriteLine("Entrenamiento personalizado agregado.\n");
+                                    historial.MostrarUltimoServicio();
+
+                                    Console.WriteLine("¿Desea agregar otro entrenamiento?");
+                                    Console.WriteLine("Escriba 'no' si no quiere agregar mas entrenamientos");
+                                    string respuesta = Console.ReadLine();
+                                    if (respuesta.Equals("no", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        tipoEntrenamientoExistente = true;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"El tipo de entrenamiento '{tipoEntrenamiento}' no existe en la lista.");
+                                }
+                            }
                             Console.WriteLine("Continuar");
                             Console.ReadKey();
                             break;
 
                         case 2:
+                        List<ClaseGrupales> clasesGrupales = new List<ClaseGrupales>
+                            {
+                                new ClaseGrupales("Yoga", 0, 0),
+                                new ClaseGrupales("Zumba", 0, 0),
+                                new ClaseGrupales("Salsa", 0, 0),
+                                new ClaseGrupales("Spinning", 0, 0)
+                            };
+                        bool tipoClaseExistente = false;
+
+                        while (!tipoClaseExistente)
+                        {
                             Console.WriteLine("\nopcion 2");
                             Console.WriteLine("Clase Grupal\n");
+                            List<string> tiposDeClases = clasesGrupales.Select(c => c._tipoClase).ToList();
+                            Console.WriteLine("Tipos de clases disponibles:");
+                            tiposDeClases.ForEach(tipo => Console.Write(tipo + " "));
                             string tipoClase = ControlDeString("\nIngrese el tipo de clase: ");
-                            int duracionClase = ControlDeIntPositivoIntPositivo("Ingrese la duración en minutos: ");
-                            int nroParticipantes = ControlDeIntPositivoIntPositivo("Ingrese el número de participantes: ");
-                            historial.AgregarServicio(new ClaseGrupales(tipoClase, nroParticipantes, duracionClase));
-                            Console.WriteLine("\nClase grupal agregada.\n");
-                            historial.MostrarUltimoServicio();
-                            Console.WriteLine("Continuar");
-                            Console.ReadKey();
-                            break;
+                            bool existe = clasesGrupales.Any(clase => clase._tipoClase.Equals(tipoClase, StringComparison.OrdinalIgnoreCase));
+                            if (existe)
+                            {
+                                int duracionClase = ControlDeIntPositivoIntPositivo("Ingrese la duración en minutos: ");
+                                int nroParticipantes = ControlDeIntPositivoIntPositivo("Ingrese el número de participantes: ");
 
-                        case 3:
-                            Console.WriteLine("\nopcion 3");
-                            Console.WriteLine("Venta de suplemento\n");
-                            string nombreSuplemento = ControlDeString("Ingrese el nombre del suplemento: ");
-                            double porcentajeGanancia = ControlDeDublePositivo("Ingrese el porcentaje de ganancia: ");
-                            double precioLista = ControlDeDublePositivo("Ingrese el precio de lista: ");
-                            historial.AgregarServicio(new Suplementos(nombreSuplemento, porcentajeGanancia, precioLista));
-                            Console.WriteLine("Suplemento agregado.\n");
-                            historial.MostrarUltimoServicio();
-                            Console.WriteLine("Continuar");
-                            Console.ReadKey();
-                            break;
+                                historial.AgregarServicio(new ClaseGrupales(tipoClase, nroParticipantes, duracionClase));
 
-                        default:
-                            Console.WriteLine("Opción no válida.");
-                            Console.WriteLine("\nContinuar");
-                            Console.ReadKey();
-                            break;
+                                Console.WriteLine("\nClase grupal agregada.\n");
+                                historial.MostrarUltimoServicio();
+
+                                Console.WriteLine("¿Desea agregar otra clase?");
+                                Console.WriteLine("Escriba 'no' si no quiere agregar mas clases grupales");
+                                string respuesta = Console.ReadLine();
+                                if (respuesta.Equals("no", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    tipoClaseExistente = true;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine($"El tipo de clase '{tipoClase}' No existe en la lista.");
+                            }
+                        }
+                        Console.WriteLine("Continuar");
+                        Console.ReadKey();
+                        break;
+
+                    case 3:
+                        Console.WriteLine("\nopcion 3");
+                        Console.WriteLine("Venta de suplemento\n");
+                        string nombreSuplemento = ControlDeString("Ingrese el nombre del suplemento: ");
+                        double porcentajeGanancia = ControlDeDublePositivo("Ingrese el porcentaje de ganancia: ");
+                        double precioLista = ControlDeDublePositivo("Ingrese el precio de lista: ");
+                        historial.AgregarServicio(new Suplementos(nombreSuplemento, porcentajeGanancia, precioLista));
+                        Console.WriteLine("Suplemento agregado.\n");
+                        historial.MostrarUltimoServicio();
+                        Console.WriteLine("Continuar");
+                        Console.ReadKey();
+                        break;
+
+                    default:
+                        Console.WriteLine("Opción no válida.");
+                        Console.WriteLine("\nContinuar");
+                        Console.ReadKey();
+                        break;
                     }
                 }
             }
