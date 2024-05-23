@@ -19,7 +19,7 @@ namespace PooTP2
         public override string ToString()
         {
             double precioTotal = CalcularPrecio();
-            return $"Suplemento:{_Nombre}, Porcentaje de ganancia: {_PorcGanancia}% Precio de lista: ${_PrecioLista}, Precio Total: ${precioTotal} ";
+            return $"Suplemento:{_Nombre}, \nPrecio de lista: ${_PrecioLista}, \nPorcentaje de ganancia: {_PorcGanancia}%, \nPrecio Total: ${precioTotal}\n";
         }
         public override double CalcularPrecio()
         {

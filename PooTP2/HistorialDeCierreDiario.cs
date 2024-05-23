@@ -14,27 +14,47 @@ namespace PooTP2
         public void AgregarServicio(Servicio servicio)
         {
             _ListarServicios.Add(servicio);
-            Console.WriteLine("Servicio agregado correctamente");
+            Console.WriteLine("\nServicio agregado correctamente");
         }
-        public void mostrarServicios()
+        public void MostrarServicios()
         {
-            _ListarServicios.ForEach((servicio) => {
-                Console.WriteLine(servicio);
-            });
+            if (_ListarServicios.Count == 0)
+            {
+                Console.WriteLine("No hay servicios disponibles.");
+            }
+            else
+            {
+                _ListarServicios.ForEach((servicio) =>
+                {
+                    Console.WriteLine(servicio);
+                });
+            }
+        }
+        public void MostrarUltimoServicio()
+        {
+            if (_ListarServicios != null && _ListarServicios.Count > 0)
+            {
+                var ultimoServicio = _ListarServicios.Last();
+                Console.WriteLine(ultimoServicio);
+            }
+            else
+            {
+                Console.WriteLine("No hay servicios disponibles.");
+            }
         }
         public double MontoTotalFacturado()
         {
-            double total = 0; 
+            double total = 0;
             for (int i = 0; i < _ListarServicios.Count; i++)
             {
                 total += _ListarServicios[i].CalcularPrecio();
             }
-            return Math.Round(total,2); 
+            return Math.Round(total, 2);
         }
 
-        public int CantidadDeServiciosSimples() 
+        public int CantidadDeServiciosSimples()
         {
-           return _ListarServicios.OfType<ClaseGrupales>().Count(c => c._CantidadDeInscriptos < 10);
+            return _ListarServicios.OfType<ClaseGrupales>().Count(c => c._CantidadDeInscriptos < 10);
         }
     }
 }

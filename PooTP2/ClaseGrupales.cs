@@ -18,7 +18,7 @@ namespace PooTP2
             _tipoClase = tipoClase;
             _CantidadDeInscriptos = cantidadDeInscriptos;
         }
-              public override double CalcularPrecio()
+        public override double CalcularPrecio()
         {
             double precioClases = _Duracion * PRECIOGRUPAL;
             precioClases = (_CantidadDeInscriptos > 10 ) ? precioClases * 0.80 : precioClases;
@@ -28,8 +28,11 @@ namespace PooTP2
 
         public override string ToString()
         {
+            int horas = _Duracion / 60;
+            string minutos = _Duracion % 60 == 0 ? "00" : (_Duracion % 60).ToString();
+            string duracionEnHoras = $"{horas}:{minutos}";
             double result = CalcularPrecio();
-            return $"Clase: {_tipoClase}, Precio por minuto: ${_PrecioLista},Duracion de la clase en Min: {_Duracion}, Cant de Inscriptos: {_CantidadDeInscriptos}, Precio total de la clase: ${result}";
+            return $"Clase: {_tipoClase},\nCant de Inscriptos: {_CantidadDeInscriptos},\nDuracion de la clase en Min: {_Duracion},\nDuracion en Horas: {duracionEnHoras},\nPrecio por minuto: ${_PrecioLista},\nPrecio total de la clase: ${result}\n";
         }
     }
 }
