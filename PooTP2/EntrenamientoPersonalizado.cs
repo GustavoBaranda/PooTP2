@@ -11,24 +11,25 @@ namespace PooTP2
     {
         protected string _TipoDeEntrenamiento;
         private const double PRECIOENTRENAMIENTO = 2000;
-        public EntrenamientoPersonalizado(string tipoDeEntrenamiento, int _Duracion) 
+        public EntrenamientoPersonalizado(string tipoDeEntrenamiento, int _Duracion)
             : base(_Duracion, PRECIOENTRENAMIENTO)
         {
             _TipoDeEntrenamiento = tipoDeEntrenamiento;
         }
 
-         public override double CalcularPrecio() {
+        public override double CalcularPrecio()
+        {
             double precioClase = (PRECIOENTRENAMIENTO / 60) * _Duracion;
             double precioFinal = precioClase += precioClase * 0.105;
             return precioFinal;
         }
         public override string ToString()
         {
-            int horas = _Duracion/60;
-            string minutos = _Duracion % 60 == 0 ? "00" : (_Duracion % 60).ToString();
-            string duracionEnHoras = $"{horas}:{minutos}";
+            int horas = _Duracion / 60;
+            int minutos = _Duracion % 60;
+            string duracionEnHoras = $"{horas}:{minutos:D2}";
             double result = CalcularPrecio();
-            return $"Tipo de entrenamiento: {_TipoDeEntrenamiento}, \nDuracion en Minutos: {_Duracion},\nDuracion en Horas: {duracionEnHoras}, \nValor por Hr es: ${_PrecioLista}, \nPrecio Final: ${result}\n";
+            return $"Tipo de entrenamiento: {_TipoDeEntrenamiento} \nDuracion en Minutos: {_Duracion} \nDuracion en Horas: {duracionEnHoras} \nValor por Hr es: ${_PrecioLista} \nPrecio Total del entrenamiento: ${result.ToString("F2")}\n";
         }
     }
 }

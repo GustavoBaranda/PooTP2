@@ -35,7 +35,7 @@ namespace PooTP2
             if (_ListarServicios != null && _ListarServicios.Count > 0)
             {
                 var ultimoServicio = _ListarServicios.Last();
-                Console.WriteLine(ultimoServicio);
+                Console.WriteLine($"\n{ultimoServicio}");
             }
             else
             {
