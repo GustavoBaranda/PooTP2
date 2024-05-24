@@ -20,7 +20,7 @@ namespace PooTP2
         {
             if (_ListarServicios.Count == 0)
             {
-                Console.WriteLine("No hay servicios disponibles.");
+                Console.WriteLine("No hay servicios disponibles.\n");
             }
             else
             {

@@ -26,13 +26,13 @@ namespace PooTP2
             return Math.Round(precioClasesFinal,2);
         }
 
-        public override string ToString()
+         public override string ToString()
         {
             int horas = _Duracion / 60;
-            string minutos = _Duracion % 60 == 0 ? "00" : (_Duracion % 60).ToString();
-            string duracionEnHoras = $"{horas}:{minutos}";
+            int minutos = _Duracion % 60;
+            string duracionEnHoras = $"{horas}:{minutos:D2}";
             double result = CalcularPrecio();
-            return $"Clase: {_tipoClase},\nCant de Inscriptos: {_CantidadDeInscriptos},\nDuracion de la clase en Min: {_Duracion},\nDuracion en Horas: {duracionEnHoras},\nPrecio por minuto: ${_PrecioLista},\nPrecio total de la clase: ${result}\n";
+            return $"Clase Grupal: {_tipoClase}\nCant de Inscriptos: {_CantidadDeInscriptos}\nDuracion de la clase en Min: {_Duracion}\nDuracion en Horas: {duracionEnHoras}\nPrecio por minuto: ${_PrecioLista}\nPrecio total de la clase: ${result.ToString("F2")}\n";
         }
     }
 }

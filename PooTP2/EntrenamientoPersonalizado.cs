@@ -24,11 +24,11 @@ namespace PooTP2
         }
         public override string ToString()
         {
-            int horas = _Duracion/60;
-            string minutos = _Duracion % 60 == 0 ? "00" : (_Duracion % 60).ToString();
-            string duracionEnHoras = $"{horas}:{minutos}";
+            int horas = _Duracion / 60;
+            int minutos = _Duracion % 60;
+            string duracionEnHoras = $"{horas}:{minutos:D2}";
             double result = CalcularPrecio();
-            return $"Tipo de entrenamiento: {_TipoDeEntrenamiento}, \nDuracion en Minutos: {_Duracion},\nDuracion en Horas: {duracionEnHoras}, \nValor por Hr es: ${_PrecioLista}, \nPrecio Final: ${result}\n";
+            return $"Tipo de entrenamiento: {_TipoDeEntrenamiento} \nDuracion en Minutos: {_Duracion} \nDuracion en Horas: {duracionEnHoras} \nValor por Hr es: ${_PrecioLista} \nPrecio Total del entrenamiento: ${result.ToString("F2")}\n";
         }
     }
 }
