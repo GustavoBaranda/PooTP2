@@ -9,12 +9,15 @@ namespace PooTP2
 {
     internal class EntrenamientoPersonalizado : ServiciosDeportivos
     {
-        public string _TipoDeEntrenamiento;
+        private string _TipoDeEntrenamiento;
         private const double PRECIOENTRENAMIENTO = 2000;
+
+        public string TipoDeEntrenamiento { get => _TipoDeEntrenamiento; set => _TipoDeEntrenamiento = value; }
+
         public EntrenamientoPersonalizado(string tipoDeEntrenamiento, int _Duracion) 
             : base(_Duracion, PRECIOENTRENAMIENTO)
         {
-            _TipoDeEntrenamiento = tipoDeEntrenamiento;
+            TipoDeEntrenamiento = tipoDeEntrenamiento;
         }
 
          public override double CalcularPrecio() {
@@ -28,7 +31,7 @@ namespace PooTP2
             int minutos = _Duracion % 60;
             string duracionEnHoras = $"{horas}:{minutos:D2}";
             double result = CalcularPrecio();
-            return $"Tipo de entrenamiento: {_TipoDeEntrenamiento} \nDuracion en Minutos: {_Duracion} \nDuracion en Horas: {duracionEnHoras} \nValor por Hr es: ${_PrecioLista} \nPrecio Total del entrenamiento: ${result.ToString("F2")}\n";
+            return $"Tipo de entrenamiento: {TipoDeEntrenamiento} \nDuracion en Minutos: {_Duracion} \nDuracion en Horas: {duracionEnHoras} \nValor por Hr es: ${_PrecioLista} \nPrecio Total del entrenamiento: ${result.ToString("F2")}\n";
         }
     }
 }

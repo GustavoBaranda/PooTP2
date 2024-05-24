@@ -8,18 +8,21 @@ namespace PooTP2
 {
     internal class Suplementos : Servicio
     {
-        public string _Nombre;
+        private string _Nombre;
         private double _PorcGanancia;
+
+        public string Nombre { get => _Nombre; set => _Nombre = value; }
+
         public Suplementos(string nombre, double porcGanancia, double precioLista) 
             : base(precioLista)   
         {
-            _Nombre = nombre;
+            Nombre = nombre;
             _PorcGanancia = porcGanancia;
         }
         public override string ToString()
         {
             double precioTotal = CalcularPrecio();
-            return $"Suplemento:{_Nombre} \nPrecio de lista: ${_PrecioLista.ToString("F2")} \nPorcentaje de ganancia: {_PorcGanancia}% \nPrecio Total del suplemento: ${precioTotal.ToString("F2")}\n";
+            return $"Suplemento:{Nombre} \nPrecio de lista: ${_PrecioLista.ToString("F2")} \nPorcentaje de ganancia: {_PorcGanancia}% \nPrecio Total del suplemento: ${precioTotal.ToString("F2")}\n";
         }
         public override double CalcularPrecio()
         {

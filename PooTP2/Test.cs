@@ -15,8 +15,8 @@ namespace PooTP2
             Console.WriteLine(" |                 Alejandro Abadi                   |");
             Console.WriteLine(" |                 Gustavo Baranda                   |");
             Console.WriteLine(" +---------------------------------------------------+");
-          
-            HistorialDeCierreDiario historial = new HistorialDeCierreDiario();
+
+            ClubDeportivo club = new ClubDeportivo();
 
             bool continuar = true;
 
@@ -37,15 +37,15 @@ namespace PooTP2
                 {
                     case 1:
                         Console.WriteLine("\nOpcion 1");
-                        AgregarServicios(historial);
+                        AgregarServiciosClub(club);
                         break;
                     case 2:
                         Console.Clear();
                         Console.WriteLine("\nOpcion 2");
                         Console.WriteLine("Detalles de los servicios\n");
-                        historial.MostrarServicios();
-                        Console.WriteLine($"Monto total facturado: $ {historial.MontoTotalFacturado().ToString("F2")}");
-                        Console.WriteLine($"Cantidad de servicios simples: {historial.CantidadDeServiciosSimples()}");
+                        club.MostrarServicios();
+                        Console.WriteLine($"Monto total facturado: $ {club.MontoTotalFacturado().ToString("F2")}");
+                        Console.WriteLine($"Cantidad de servicios simples: {club.CantidadDeServiciosSimples()}");
                         Console.WriteLine("Presione cualquier tecla para volver al menu principal...");
                         Console.ReadKey();
                         break;
@@ -59,9 +59,9 @@ namespace PooTP2
                         break;
                 }
             }
-            MostrarResumen(historial);
+            MostrarResumen(club);
 
-            static void AgregarServicios(HistorialDeCierreDiario historial)
+            static void AgregarServiciosClub(ClubDeportivo club)
             {
                 while (true)
                 {
@@ -91,7 +91,7 @@ namespace PooTP2
                             List<EntrenamientoPersonalizado> entrenamientoPersonalizado = new List<EntrenamientoPersonalizado>
                             {
                                 new EntrenamientoPersonalizado("Pesas", 0),
-                                new EntrenamientoPersonalizado("Calestenia", 0),
+                                new EntrenamientoPersonalizado("Calistenia", 0),
                                 new EntrenamientoPersonalizado("Musculacion", 0),
                                 new EntrenamientoPersonalizado("Crossfit", 0)
                             };
@@ -100,20 +100,20 @@ namespace PooTP2
                             {
                                 Console.WriteLine("\nopcion 1");
                                 Console.WriteLine("Entrenamiento personalizado");
-                                List<string> tiposDeEntrenamientos = entrenamientoPersonalizado.Select(e => e._TipoDeEntrenamiento).ToList();
+                                List<string> tiposDeEntrenamientos = entrenamientoPersonalizado.Select(e => e.TipoDeEntrenamiento).ToList();
                                 Console.WriteLine("Tipos de entrenamientos disponibles:\n");
                                 tiposDeEntrenamientos.ForEach(tipo => Console.Write(tipo + " "));
 
                                 string tipoEntrenamiento = ControlDeString("\n\nIngrese el tipo de entrenamiento: ");
-                                bool existe = entrenamientoPersonalizado.Any(entrenamiento => entrenamiento._TipoDeEntrenamiento.Equals(tipoEntrenamiento, StringComparison.OrdinalIgnoreCase));
+                                bool existe = entrenamientoPersonalizado.Any(entrenamiento => entrenamiento.TipoDeEntrenamiento.Equals(tipoEntrenamiento, StringComparison.OrdinalIgnoreCase));
 
                                 if (existe)
                                 {
                                     int duracionEntrenamiento = ControlDeIntPositivoIntPositivo("Ingrese la duración en minutos: ");
-                                    historial.AgregarServicio(new EntrenamientoPersonalizado(tipoEntrenamiento, duracionEntrenamiento));
+                                    club.AgregarServicio(new EntrenamientoPersonalizado(tipoEntrenamiento, duracionEntrenamiento));
 
                                     Console.WriteLine("Entrenamiento personalizado agregado.\n");
-                                    historial.MostrarUltimoServicio();
+                                    club.MostrarUltimoServicio();
 
                                     Console.WriteLine("¿Desea agregar otro entrenamiento?");
                                     Console.WriteLine("Presione cualquier tecla para continuar...");
@@ -145,20 +145,20 @@ namespace PooTP2
                         {
                             Console.WriteLine("\nopcion 2");
                             Console.WriteLine("Clase Grupal");
-                            List<string> tiposDeClases = clasesGrupales.Select(c => c._tipoClase).ToList();
+                            List<string> tiposDeClases = clasesGrupales.Select(c => c.TipoClase).ToList();
                             Console.WriteLine("Tipos de clases disponibles:\n");
                             tiposDeClases.ForEach(tipo => Console.Write(tipo + " "));
                             string tipoClase = ControlDeString("\n\nIngrese el tipo de clase: ");
-                            bool existe = clasesGrupales.Any(clase => clase._tipoClase.Equals(tipoClase, StringComparison.OrdinalIgnoreCase));
+                            bool existe = clasesGrupales.Any(clase => clase.TipoClase.Equals(tipoClase, StringComparison.OrdinalIgnoreCase));
                             if (existe)
                             {
                                 int duracionClase = ControlDeIntPositivoIntPositivo("Ingrese la duración en minutos: ");
                                 int nroParticipantes = ControlDeIntPositivoIntPositivo("Ingrese el número de participantes: ");
 
-                                historial.AgregarServicio(new ClaseGrupales(tipoClase, nroParticipantes, duracionClase));
+                                club.AgregarServicio(new ClaseGrupales(tipoClase, nroParticipantes, duracionClase));
 
                                 Console.WriteLine("Clase grupal agregada.\n");
-                                historial.MostrarUltimoServicio();
+                                club.MostrarUltimoServicio();
 
                                 Console.WriteLine("¿Desea agregar otra clase?");
                                 Console.WriteLine("Presione cualquier tecla para continuar...");
@@ -191,20 +191,20 @@ namespace PooTP2
                         {
                             Console.WriteLine("\nopcion 3");
                             Console.WriteLine("Venta de suplemento");
-                            List<string> tiposDeSuplemento = suplementos.Select(s => s._Nombre).ToList();
+                            List<string> tiposDeSuplemento = suplementos.Select(s => s.Nombre).ToList();
                             Console.WriteLine("Tipos de suplementos disponibles:\n");
                             tiposDeSuplemento.ForEach(tipo => Console.Write(tipo +" "));
                             string nombreSuplemento = ControlDeString("\n\nIngrese el nombre del suplemento: ");
-                            bool existe = suplementos.Any(clase => clase._Nombre.Equals(nombreSuplemento, StringComparison.OrdinalIgnoreCase));
+                            bool existe = suplementos.Any(clase => clase.Nombre.Equals(nombreSuplemento, StringComparison.OrdinalIgnoreCase));
                             if (existe)
                             {
                                 double porcentajeGanancia = ControlDeDublePositivo("Ingrese el porcentaje de ganancia: ");
                                 double precioLista = ControlDeDublePositivo("Ingrese el precio de lista: ");
 
-                                historial.AgregarServicio(new Suplementos(nombreSuplemento, porcentajeGanancia, precioLista));
+                                club.AgregarServicio(new Suplementos(nombreSuplemento, porcentajeGanancia, precioLista));
 
                                 Console.WriteLine("Suplemento agregado.\n");
-                                historial.MostrarUltimoServicio();
+                                club.MostrarUltimoServicio();
                     
                                 Console.WriteLine("¿Desea agregar otro Suplemento?");
                                 Console.WriteLine("Presione cualquier tecla para continuar...");
@@ -231,10 +231,10 @@ namespace PooTP2
                 }
             }
 
-            static void MostrarResumen(HistorialDeCierreDiario historial)
+            static void MostrarResumen(ClubDeportivo club)
             {
-                Console.WriteLine($"\nMonto total facturado: $ {historial.MontoTotalFacturado().ToString("F2")}");
-                Console.WriteLine($"Cantidad de servicios simples: {historial.CantidadDeServiciosSimples()}");
+                Console.WriteLine($"\nMonto total facturado: $ {club.MontoTotalFacturado().ToString("F2")}");
+                Console.WriteLine($"Cantidad de servicios simples: {club.CantidadDeServiciosSimples()}");
                 Console.WriteLine("\nMuchas gracias por usar nuestra aplicación");
                 Console.ReadKey();
             }    

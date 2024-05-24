@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PooTP2
 {
-    internal class HistorialDeCierreDiario
+    internal class ClubDeportivo
     {
         private List<Servicio> _ListarServicios = new List<Servicio>();
 
@@ -54,7 +54,7 @@ namespace PooTP2
 
         public int CantidadDeServiciosSimples()
         {
-            return _ListarServicios.OfType<ClaseGrupales>().Count(c => c._CantidadDeInscriptos < 10);
+            return _ListarServicios.OfType<ClaseGrupales>().Count(c => c.CantidadDeInscriptos < 10);
         }
     }
 }
