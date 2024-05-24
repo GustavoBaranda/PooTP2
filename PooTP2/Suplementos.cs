@@ -16,11 +16,6 @@ namespace PooTP2
             _Nombre = nombre;
             _PorcGanancia = porcGanancia;
         }
-        // public override string ToString()
-        // {
-        //     double precioTotal = CalcularPrecio();
-        //     return $"Suplemento:{_Nombre}, \nPrecio de lista: ${_PrecioLista}, \nPorcentaje de ganancia: {_PorcGanancia}%, \nPrecio Total: ${precioTotal}\n";
-        // }
         public override string ToString()
         {
             double precioTotal = CalcularPrecio();

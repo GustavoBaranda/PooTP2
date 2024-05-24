@@ -8,6 +8,14 @@ namespace PooTP2
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("\n\n\n +---- El proyecto fue creado por el grupo nro. 5 ---+");
+            Console.WriteLine(" |                Marcelo Galimberti                 |");
+            Console.WriteLine(" |                 Catriel Escobar                   |");
+            Console.WriteLine(" |                 M. Eugenia Bava                   |");
+            Console.WriteLine(" |                 Alejandro Abadi                   |");
+            Console.WriteLine(" |                 Gustavo Baranda                   |");
+            Console.WriteLine(" +---------------------------------------------------+");
+          
             HistorialDeCierreDiario historial = new HistorialDeCierreDiario();
 
             bool continuar = true;
