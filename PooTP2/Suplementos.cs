@@ -22,11 +22,11 @@ namespace PooTP2
         public override string ToString()
         {
             double precioTotal = CalcularPrecio();
-            return $"Suplemento:{Nombre} \nPrecio de lista: ${_PrecioLista.ToString("F2")} \nPorcentaje de ganancia: {_PorcGanancia}% \nPrecio Total del suplemento: ${precioTotal.ToString("F2")}\n";
+            return $"Suplemento:{Nombre} \nPrecio de lista: ${PrecioLista.ToString("F2")} \nPorcentaje de ganancia: {_PorcGanancia}% \nPrecio Total del suplemento: ${precioTotal.ToString("F2")}\n";
         }
         public override double CalcularPrecio()
         {
-            double precioConGanancia =  _PrecioLista * (1+(_PorcGanancia / 100));
+            double precioConGanancia =  PrecioLista * (1+(_PorcGanancia / 100));
             double precioFinal = precioConGanancia * 1.21;
             return Math.Round(precioFinal,2);
         }

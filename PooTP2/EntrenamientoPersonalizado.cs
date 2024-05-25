@@ -21,17 +21,17 @@ namespace PooTP2
         }
 
          public override double CalcularPrecio() {
-            double precioClase = (PRECIOENTRENAMIENTO / 60) * _Duracion;
+            double precioClase = (PRECIOENTRENAMIENTO / 60) * Duracion;
             double precioFinal = precioClase += precioClase * 0.105;
             return precioFinal;
         }
         public override string ToString()
         {
-            int horas = _Duracion / 60;
-            int minutos = _Duracion % 60;
+            int horas = Duracion / 60;
+            int minutos = Duracion % 60;
             string duracionEnHoras = $"{horas}:{minutos:D2}";
             double result = CalcularPrecio();
-            return $"Tipo de entrenamiento: {TipoDeEntrenamiento} \nDuracion en Minutos: {_Duracion} \nDuracion en Horas: {duracionEnHoras} \nValor por Hr es: ${_PrecioLista} \nPrecio Total del entrenamiento: ${result.ToString("F2")}\n";
+            return $"Tipo de entrenamiento: {TipoDeEntrenamiento} \nDuracion en Minutos: {Duracion} \nDuracion en Horas: {duracionEnHoras} \nValor por Hr es: ${PrecioLista} \nPrecio Total del entrenamiento: ${result.ToString("F2")}\n";
         }
     }
 }

@@ -8,11 +8,11 @@ namespace PooTP2
 {
     abstract class Servicio
     {
-         protected double _PrecioLista;
+        protected double PrecioLista;
 
         public Servicio(double precioLista)
         {
-            _PrecioLista = precioLista;
+            PrecioLista = precioLista;
         }
         public abstract double CalcularPrecio();
     }
