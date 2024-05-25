@@ -46,7 +46,7 @@ namespace PooTP2
                         club.MostrarServicios();
                         Console.WriteLine($"Monto total facturado: $ {club.MontoTotalFacturado().ToString("F2")}");
                         Console.WriteLine($"Cantidad de servicios simples: {club.CantidadDeServiciosSimples()}");
-                        Console.WriteLine("Presione cualquier tecla para volver al menu principal...");
+                        Console.WriteLine("Presione enter para volver al menu principal...");
                         Console.ReadKey();
                         break;
                     case 3:
@@ -54,7 +54,7 @@ namespace PooTP2
                         break;
                     default:
                         Console.WriteLine("Opción no válida.");
-                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.WriteLine("Presione enter para continuar...");
                         Console.ReadKey();
                         break;
                 }
@@ -116,7 +116,7 @@ namespace PooTP2
                                     club.MostrarUltimoServicio();
 
                                     Console.WriteLine("¿Desea agregar otro entrenamiento?");
-                                    Console.WriteLine("Presione cualquier tecla para continuar...");
+                                    Console.WriteLine("Presione enter para continuar...");
                                     Console.WriteLine("O escriba 'no' para volver al menu de agregar servivios");
                                     string respuesta = Console.ReadLine();
                                     if (respuesta.Equals("no", StringComparison.OrdinalIgnoreCase))
@@ -161,7 +161,7 @@ namespace PooTP2
                                 club.MostrarUltimoServicio();
 
                                 Console.WriteLine("¿Desea agregar otra clase?");
-                                Console.WriteLine("Presione cualquier tecla para continuar...");
+                                Console.WriteLine("Presione enter para continuar...");
                                 Console.WriteLine("O escriba 'no' para volver al menu de agregar servivios");
                                 string respuesta = Console.ReadLine();
                                 if (respuesta.Equals("no", StringComparison.OrdinalIgnoreCase))
@@ -207,7 +207,7 @@ namespace PooTP2
                                 club.MostrarUltimoServicio();
                     
                                 Console.WriteLine("¿Desea agregar otro Suplemento?");
-                                Console.WriteLine("Presione cualquier tecla para continuar...");
+                                Console.WriteLine("Presione enter para continuar...");
                                 Console.WriteLine("O escriba 'no' para volver al menu de agregar servivios");
                                 string respuesta = Console.ReadLine();
                                 if (respuesta.Equals("no", StringComparison.OrdinalIgnoreCase))
@@ -217,14 +217,14 @@ namespace PooTP2
                             }
                             else
                             {
-                                    Console.WriteLine($"El tipo de clase '{nombreSuplemento}' No existe en la lista.");
+                                Console.WriteLine($"El tipo de clase '{nombreSuplemento}' No existe en la lista.");
                             }
                         }
                         break;
 
                     default:
                         Console.WriteLine("Opción no válida.");
-                        Console.WriteLine("Presione cualquier tecla para continuar...");
+                        Console.WriteLine("Presione enter para continuar...");
                         Console.ReadKey();
                         break;
                     }
